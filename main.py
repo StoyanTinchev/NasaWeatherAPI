@@ -17,19 +17,8 @@ def api():
     latitude: str = request.args.get('latitude')
     print(longitude, latitude)
 
-    if longitude is not None and latitude is not None and redis.contains(longitude + latitude):
-        return jsonify(redis.get(longitude + latitude))
-
-    result = dict()
-    result["sol_keys"] = list()
-    for i in range(6):
-        weather = WeatherController().get_weather()
-        result["sol_keys"].append(weather)
-
-    if longitude is not None and latitude is not None:
-        redis.set(longitude + latitude, result)
-
-    return jsonify(result)
+    weather = WeatherController(longitude, latitude, redis).get_weather()
+    return jsonify(weather)
 
 
 if __name__ == "__main__":
