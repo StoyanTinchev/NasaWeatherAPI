@@ -43,9 +43,9 @@ class WeatherController:
                 print("temp redis: {};  pressure redis: {};  wind redis: {}"
                       .format(temp_redis, pressure_redis, wind_redis))
 
-                weather_temp = {"low": temp_redis - 2, "high": temp_redis + 2}
-                weather_pressure = {"low": pressure_redis - 2, "high": pressure_redis + 2}
-                weather_wind = {"low": wind_redis - 1, "high": wind_redis + 1}
+                weather_temp = {"low": temp_redis - 10, "high": temp_redis + 10}
+                weather_pressure = {"low": pressure_redis - 10, "high": pressure_redis + 10}
+                weather_wind = {"low": wind_redis - 3, "high": wind_redis + 3}
 
                 sol_day = self.__generate_weather_info(weather_temp,
                                                        weather_pressure, weather_wind)
